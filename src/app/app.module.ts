@@ -26,6 +26,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { CustomFormsModule } from 'ng2-validation';
+import { DataTableModule } from 'angular-4-data-table';
 
 
 @NgModule({
@@ -44,18 +46,24 @@ import { ProductService } from './product.service';
     ProductFormComponent
   ],
   imports: [
+    CustomFormsModule,
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'login', component: LoginComponent },
+      {path: '', component: HomeComponent},
+      {path: 'products', component: ProductsComponent},
+      {path: 'shopping-cart', component: ShoppingCartComponent},
+      {path: 'login', component: LoginComponent},
 
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
+      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
+      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
       {
         path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
+      },
+      {
+        path: 'admin/products/:id',
         component: ProductFormComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
@@ -74,7 +82,8 @@ import { ProductService } from './product.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    DataTableModule
   ],
   providers: [
     AuthService,
