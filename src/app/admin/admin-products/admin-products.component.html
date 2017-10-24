@@ -12,6 +12,7 @@
     placeholder="Search..."
   >
 </p>
+
 <data-table  (reload)="reloadItems($event)" [items]="items" [itemCount]="itemCount">
   <data-table-column
     [property]="'title'"

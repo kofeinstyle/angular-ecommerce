@@ -9,7 +9,12 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart">Shopping cart</a>
+        <a class="nav-link" routerLink="/shopping-cart">
+          Shopping cart
+          <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+            {{cart.totalItemsCount}}
+          </span>
+        </a>
       </li>
       <ng-template #anonymusUser>
         <li class="nav-item">

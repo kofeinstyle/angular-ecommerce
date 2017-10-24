@@ -16,6 +16,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   items: Product[] = [];
   itemCount:number = 0;
 
+
   constructor(
     private productService: ProductService
   ) {
