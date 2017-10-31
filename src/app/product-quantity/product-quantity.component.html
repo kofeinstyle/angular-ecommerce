@@ -1,0 +1,11 @@
+<div class="row no-gutters">
+  <div class="col-2">
+    <button (click)="removeFromCard()" class="btn-secondary btn btn-block">-</button>
+  </div>
+  <div class="col text-center">
+    {{shoppingCart.getQuantity(product)}} in cart
+  </div>
+  <div class="col-2">
+    <button (click)="addToCard()" class="btn-secondary btn btn-block">+</button>
+  </div>
+</div>
